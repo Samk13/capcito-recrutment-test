@@ -32,43 +32,28 @@ function populateData(json) {
     row.forEach(cell => {
       // console.log(cell);
       const td = document.createElement("td");
-      td.textContent = cell;   
-// td.classList.add(nameClass);
+      td.textContent = cell;
+      // td.classList.add(nameClass);
       tr.appendChild(td);
     });
     tableBody.appendChild(tr);
   });
 }
 
-// add specific classes to every cell
+$(document).ready(function() {
+  // add specific classes to every cell
 
-const indexClass = '"border-t""w-1/12""p-2"';
-const nameClass = '"border-t""w-3/12""p-2"';
-const ageClass = '"border-t""w-2/12""p-2"';
-const emailClass = '"border-t""w-2/12""p-2"';
+  const indexClass = "text-left w-1/12 p-2 pt-0";
+  const nameClass = "text-left w-3/12 p-2 pt-0";
+  const ageClass = "text-left w-2/12 p-2 pt-0";
+  const emailClass = "text-left w-4/12 p-2 pt-0";
 
-$(document).ready(function(){
-
-  $("tbody tr td:eq(0)").addClass(indexClass);
-  $("tbody tr td:eq(1)").addClass(nameClass);
-  $("tbody tr td:eq(2)").addClass(ageClass);
-  $("tbody tr td:eq(3)").addClass(emailClass);
-
-})
+  $("tr > td:first-child").addClass(indexClass);
+  $("tr td:nth-child(2)").addClass(nameClass);
+  $("tr td:nth-child(3)").addClass(ageClass);
+  $("tr td:nth-child(4)").addClass(emailClass);
 
 
-
-$("td").click(function() {
-  var col = $(this)
-    .parent()
-    .children()
-    .index($(this));
-  var row = $(this)
-    .parent()
-    .parent()
-    .children()
-    .index($(this).parent());
-  console.log("Row: " + row + ", Column: " + col);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
