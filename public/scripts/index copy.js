@@ -78,7 +78,7 @@ function handleDelete(){
   
   // document.getElementById("editBTN");
   console.log("delete is clicked! ");
-  $(.)
+
   
 }
 
