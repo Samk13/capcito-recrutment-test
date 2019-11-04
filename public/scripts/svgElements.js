@@ -1,6 +1,7 @@
-const editIcon = `
+const deleteIcon = `
                 <svg
                       class="w-5 h-5 stroke-current"
+                      onclick="handleEdit()"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="none"
@@ -17,9 +18,10 @@ const editIcon = `
 
 `;
 
-const deleteIcon = `
+const editIcon = `
                     <svg
                       class="w-5 h-5 stroke-current"
+                      onclick="handleDelete()"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="none"

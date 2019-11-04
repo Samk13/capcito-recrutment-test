@@ -34,6 +34,8 @@
                 <div class="flex justify-left">
                   <a href="#" class="mr-2">
                     <svg
+                    onclick="handleDelete()"
+                    id="editBTN"
                       class="w-5 h-5 stroke-current"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -115,7 +117,12 @@
       </form>
     </main>
 
-    <script src="./scripts/index.js"></script>
+    
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="./scripts/index.js"></script>
     <script src="./scripts/svgElements.js"></script>
   </body>
 </html>
