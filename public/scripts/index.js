@@ -25,9 +25,10 @@ saveUser.addEventListener("submit", function(e) {
   const iconContainer = document.createElement("td");
   const iconDiv = document.createElement("div");
   const index = document.createElement("td");
+  
   // add content
 
-  index.innerHTML = "1";
+  index.innerHTML = document.getElementById("userTable").children[1].children.length + 1;
   addedName.innerHTML = name;
   addedAge.innerHTML = age;
   addedEmail.innerHTML = email;
@@ -48,6 +49,7 @@ saveUser.addEventListener("submit", function(e) {
   editBtn.setAttribute("href","#");
   //append to document
 
+    
   document.getElementById("userTable").children[1].appendChild(tr);
   tr.appendChild(index);
   tr.appendChild(addedName);
@@ -63,3 +65,13 @@ saveUser.addEventListener("submit", function(e) {
   document.getElementById("age").value = "";
   document.getElementById("email").value = "";
 });
+
+// delete user
+
+let data =document.getElementById("userTable").children[1].children.length;
+console.log(data);
+
+
+// handleDelete(){
+
+// }

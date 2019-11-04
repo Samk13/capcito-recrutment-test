@@ -11,23 +11,40 @@ let emails = [
   "linnea@gmail.com",
   "anders@gmail.com"
 ];
-
 const saveUser = document.forms["userForm"];
+
+let name = "[" + saveUser.querySelector('input[type="Text"]').value + "]";
+let age = saveUser.querySelector('input[type="number"]').value;
+let email = saveUser.querySelector('input[type="email"]').value;
+let newUsers = users.concat(name);
+
+function checkUpdate(users, newUsers){
+  console.log("users = " + users);
+  console.log("newUsers = " + newUsers);
+  if (users !== newUsers){
+    return true;
+  } else {
+    return false;
+  }
+console.log(checkUpdate(users, newUsers));
+
+}
+  console.log(name, age, email);
+
 saveUser.addEventListener("submit", function(e) {
   // prevent default actions
   e.preventDefault();
-  // save input data into var
-  let name = saveUser.querySelector('input[type="Text"]').value;
-  let age = saveUser.querySelector('input[type="number"]').value;
-  let email = saveUser.querySelector('input[type="email"]').value;
 
-  console.log(name, age, email);
+console.log(e);
+if(checkUpdate() === true){
+tableContainer.innerHTML(theTable);
 
-  let newUser = [...users,name];
+}
+
+  
   ages.push(age);
   emails.push(email);
 
-  console.log(newUser);
  
 });
 
@@ -47,10 +64,14 @@ if ((document.activeElement = button)) {
           </thead>
           <tbody>
           `;
-    for (let i = 0; i < users.length; i++) {
-      theTable += `
+
+          let theUsers = users.length
+
+          if( theUsers !== users){
+for (let i = 0; i < theUsers; i++) {
+  theTable += `
             <tr>
-              <td id="${i+1}" class="border-t w-1/12 p-2"> ${i + 1} </td>
+              <td id="${i + 1}" class="border-t w-1/12 p-2"> ${i + 1} </td>
               <td class="border-t w-3/12 p-2">${users[i]}</td>
               <td class="border-t w-2/12 p-2">${ages[i]}</td>
               <td class="border-t w-2/12 p-2">${emails[i]}</td>
@@ -96,18 +117,19 @@ if ((document.activeElement = button)) {
               </td>
             </tr>
             `;
-    }
+}
 
-    theTable += `
+theTable += `
           </tbody>
         </table>
         `;
 
-    return (tableContainer.innerHTML = theTable);
+return (tableContainer.innerHTML = theTable);
+          }
+    
   }
 }
 
-(populateTable())();
 
 
 
