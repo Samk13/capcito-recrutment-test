@@ -13,7 +13,7 @@
   <body class="min-h-screen font-light text-gray-900 bg-gray-100">
     <main class="container mx-auto py-8">
       <h1 class="text-2xl mb-1">List of users</h1>
-      <div class="bg-white shadow p-8 mb-8">
+      <div class="bg-white shadow p-8 mb-8" id="tableContainer">
         <table class="table-fixed w-full" id="userTable">
           <thead>
             <tr>
@@ -29,9 +29,9 @@
               <td class="border-t w-1/12 p-2">1</td>
               <td class="border-t w-3/12 p-2">Per Andersson</td>
               <td class="border-t w-2/12 p-2">31</td>
-              <td class="border-t w-4/12 p-2">per.andersson@capcito.com</td>
+              <td class="border-t w-2/12 p-2">per.andersson@capcito.com</td>
               <td class="border-t w-2/12 p-2">
-                <div class="flex justify-end">
+                <div class="flex justify-left">
                   <a href="#" class="mr-2">
                     <svg
                       class="w-5 h-5 stroke-current"
@@ -116,5 +116,6 @@
     </main>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/svgElements.js"></script>
   </body>
 </html>
