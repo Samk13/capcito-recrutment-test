@@ -172,7 +172,8 @@ $(document).ready(function() {
         $("#name").val('');
         $("#age").val('');
         $("#email").val('');
-        
+      document.removeEventListener("DOMContentLoaded", completed);
+      
     });
       
       
