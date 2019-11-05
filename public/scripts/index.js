@@ -23,8 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
   loadJsonData();
 });
 
+// generate randomNumerID
+    let random_id = function() {
+      let id_num = Math.random()
+        .toString(9)
+        .substr(2, 3);
+      let id_str = Math.random()
+        .toString(36)
+        .substr(2);
+      return id_num + id_str;
+    };
+
+
 function populateData(json) {
-  console.log(json);
+  // console.log(json);
 
   // clear existing HTML
   while (tableBody.firstChild) {
@@ -35,10 +47,13 @@ function populateData(json) {
   json.forEach(row => {
     const tr = document.createElement("tr");
     row.forEach(cell => {
+      // generate random ID
+      let row_id = random_id(); 
       // console.log(cell);
       const td = document.createElement("td");
       td.textContent = cell;
-      // td.classList.add(nameClass);
+      // inject ID
+      td.setAttribute("id", row_id);
       tr.appendChild(td);
     });
     tableBody.appendChild(tr);
@@ -72,6 +87,7 @@ $(document).ready(function() {
   $("div a:nth-child(1)").attr("href", "#");
   $("div a:nth-child(2)").attr("href", "#");
   $("div a:nth-child(2)").attr("id", "trash");
+  $("div a:nth-child(1)").attr("id", "edit");
   $("div a:nth-child(1)").append(`<svg
                    
                       class="w-5 h-5 stroke-current"
@@ -110,9 +126,33 @@ $(document).ready(function() {
 
   // delete button function 
   $("#userTable").on("click", "#trash", function() {
-    $(this).parent().parent().parent().remove();
+    // $(this).parent().parent().parent().remove();
+    $(this).closest('tr').remove();
+
+    console.log("one row is deleted !🐱‍👤💣");
+    
   });
 
-  
+  // edit button
+
+  $("#userTable").on("click", "#edit", function() {
+    console.log("edit 💬");
+
+    // fill the row data in the input fields
+
+    let name = $(this).closest("tr").find("td:eq(1)").text()
+    $("#name").val(name)
+    let age = $(this).closest("tr").find("td:eq(2)").text()
+    $("#age").val(age)
+    let email = $(this).closest("tr").find("td:eq(3)").text()
+    $("#email").val(email)
+
+    // save changes 
+    
+
+    
+  });
+
+
 });
 
