@@ -53,7 +53,7 @@ function populateData(json) {
       const td = document.createElement("td");
       td.textContent = cell;
       // inject ID
-      td.setAttribute("id", row_id);
+      tr.setAttribute("id", row_id);
       tr.appendChild(td);
     });
     tableBody.appendChild(tr);
@@ -127,9 +127,12 @@ $(document).ready(function() {
   // delete button function 
   $("#userTable").on("click", "#trash", function() {
     // $(this).parent().parent().parent().remove();
+    rowIndex = $(this).closest("tr").index();
+     console.log("row index " + rowIndex + " is deleted !🐱‍👤💣");
     $(this).closest('tr').remove();
+    
 
-    console.log("one row is deleted !🐱‍👤💣");
+   
     
   });
 
@@ -137,7 +140,9 @@ $(document).ready(function() {
 
   $("#userTable").on("click", "#edit", function() {
     console.log("edit 💬");
-
+    rowIndex = $(this).closest("tr").attr("id");
+    console.log(rowIndex);
+      
     // fill the row data in the input fields
 
     let name = $(this).closest("tr").find("td:eq(1)").text()
@@ -146,8 +151,31 @@ $(document).ready(function() {
     $("#age").val(age)
     let email = $(this).closest("tr").find("td:eq(3)").text()
     $("#email").val(email)
-
+    $("#name").focus()
     // save changes 
+
+    $("#userForm").submit(function(e) {
+
+      e.preventDefault();
+
+      // edit name
+      let editedName = $("#name").val()
+      $('#'+ rowIndex).closest("tr").find("td:eq(1)").html(editedName);
+      // edit age
+      let editedAge = $("#age").val();
+      $("#" + rowIndex).closest("tr").find("td:eq(2)").html(editedAge);
+      //edit email
+       let editedEmail = $("#email").val();
+       $("#" + rowIndex).closest("tr").find("td:eq(3)").html(editedEmail);
+
+        // clear input fields
+        $("#name").val('');
+        $("#age").val('');
+        $("#email").val('');
+        
+    });
+      
+      
     
 
     
